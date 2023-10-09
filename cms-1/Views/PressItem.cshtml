@@ -1,0 +1,16 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.PressItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<section id="about">
+	<div class="container">
+		<h2>Press Item</h2>
+		<p>ID: @Model.Pageid</p>
+		<p>Title: @Model.Title</p>
+		<p>Leadtext: @Model.Leadtext</p>
+	</div>
+
+</section>

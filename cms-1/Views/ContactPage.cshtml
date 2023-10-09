@@ -1,0 +1,16 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<section id="about">
+	<div class="container">
+		<h2>Contact Us Here!</h2>
+		<p>@Model.Telefon</p>
+		<p>@Model.Adress</p>
+		<p>@Model.Epost</p>
+	</div>
+
+</section>

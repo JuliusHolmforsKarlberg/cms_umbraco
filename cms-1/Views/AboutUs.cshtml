@@ -1,0 +1,15 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.AboutUs>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+
+<section id="about">
+	<div class="container">
+		<h2>About TT Nyhetsbyrån</h2>
+		<p>@Model.Beskrivningen</p>
+	</div>
+
+</section>

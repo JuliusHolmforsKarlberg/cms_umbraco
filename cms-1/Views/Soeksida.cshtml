@@ -1,0 +1,56 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Soeksida>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inject Umbraco.Cms.Core.IPublishedContentQuery publishedContentQuery
+
+@{
+    Layout = "Master.cshtml";
+    var searchQuery = Context.Request.Query["q"];
+
+}
+
+
+<section id="about">
+    <div class="container">
+        <h2>Sök på TT Nyhetsbyrån här!</h2>
+<form action="@Model.Url()" method="Get" id="search">
+    <div>
+        <input type="text" placeholder="Sök på TT Nyhetsbyrån" name="q" value="@searchQuery" />
+    </div>
+
+    <div>
+                <button class="btn-primary">Sök</button>
+    </div>
+
+    <div>
+        @if (!string.IsNullOrWhiteSpace(searchQuery))
+        {
+            var results = publishedContentQuery.Search(searchQuery);
+            long resultCount = results != null && results.Any() ? results.Count() : 0;
+            @Html.Raw(string.Format(Umbraco.GetDictionaryValue("Search.Results"), resultCount, searchQuery))
+            if (resultCount > 0)
+            {
+                foreach (var result in results)
+                {
+                    <div>
+                        <a href="@result.Content.Url()">
+                            <h2>
+                                @(result.Content.HasProperty("title") && result.Content.HasValue("title") && !string.IsNullOrWhiteSpace(result.Content.Value<string>("title")) ? result.Content.Value("title") : result.Content.Name)
+                            </h2>
+                            @if (result.Content.HasProperty("subtitle") && result.Content.HasValue("subtitle") && !string.IsNullOrWhiteSpace(result.Content.Value<string>("subtitle")))
+                            {
+                                <h3>@(result.Content.Value<string>("subtitle"))</h3>
+                            }
+                        </a>
+
+                    </div>
+                }
+                <hr>
+            }
+        }
+    </div>
+
+</form>
+    </div>
+
+</section>

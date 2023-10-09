@@ -1,0 +1,27 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Startpage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+<section id="about">
+	<div class="container">
+		<h2>Hitta ditt innehåll här</h2>
+		<p>Nordens största utbud av bilder, videor, infografik och nyhetsmaterial</p>
+<img src="@Model.StartPageImage1.Url()"/>
+<p>@Model.Description<p/>
+
+		<div class="centered-element">
+				@Html.GetBlockListHtml(Model.MainArea)
+		</div>
+
+		<div class="centered-element">
+				@Html.GetBlockListHtml(Model.HuvudYta)
+		</div>
+
+	</div>
+
+</section>

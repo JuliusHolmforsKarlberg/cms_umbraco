@@ -1,0 +1,67 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models.PublishedContent;
+@{
+	Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>TT Nyhetsbyrån</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<header>
+		<nav class="navbar">
+			<div class="container">
+				<h1>TT Nyhetsbyrån</h1>
+			<ul>
+				<li><a href="/">Startpage</a></li>
+				<li><a href="/aboutus">About Us</a></li>
+				<li><a href="/contactpage">ContactPage</a></li>
+				<li><a href="/pressreleases">PressReleases</a></li>
+				<li><a href="/pressreleases/ingrid-bonde-laemnar-alecta/">Press Item</a></li>
+				<li><a href="/pressreleases/magnus-tell-ny-aktiechef-paa-alecta/">Press Item 2</a></li>
+				<li><a href="/pressreleases/afa-foersaekring-och-alecta-samverkar-kring-forskning-om-psykisk-haelsa/">Press Item 3</a></li>
+				<li><a href="/soeksida">Söksida</a></li>
+			</ul>
+			</div>
+		</nav>
+	</header>
+
+	<!-- This is where we're going to render our content -->
+	@RenderBody()
+
+	<div class="content">
+		<!-- Your page content here -->
+	</div>
+
+	<!-- Footer -->
+	<div class="container-fluid footer">
+		<div class="container">
+
+			@Model.Value("footerText", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Copyright &copy; TT News Agency 2023"))
+
+			<div class="text-center">
+				<img src="/images/TTlogo.png" class="img-fluid img-small" alt="Arm with TT News Agency Logo">
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
